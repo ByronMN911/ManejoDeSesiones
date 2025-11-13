@@ -107,6 +107,7 @@
                 //Se muestra el campo de precio solo si el usuario está logeado
                 if(usernameOptional.isPresent()) {
                     out.println("<th>PRECIO</th>");
+                    out.println("<th>OPCIONES</th>");
                 }
 
                 out.println("</tr>");
@@ -126,6 +127,16 @@
                     out.println("<td>" + p.getTipo() + "</td>");
                     if(usernameOptional.isPresent()) {
                         out.println("<td>" + p.getPrecio()+ "</td>");
+                        /*
+                        * Agregamos un hipervínculo a cada registro de la tabla productos, donde agregamos
+                        * un parámetro en la URL que será el ID de cada producto que obtenemos con el metodo
+                        * getIdProducto() de nuestra clase Producto
+                        * */
+                        out.println("<td><a href=\""
+                        + req.getContextPath()
+                        +"/agregar-carro?id=0"
+                        +p.getIdProducto()
+                        +"\">Agregar Producto al carro</a></td>");
                     }
                     out.println("</tr>");
                 });
