@@ -123,7 +123,22 @@ public class DetalleCarro {
      *    usando una referencia al metodo getSubtotal()
      * 3. sum() se encarga suma todos los valores double del stream resultante
      */
-    public double getTotal() {
+
+    public double getSubtotal() {
+        //Este calculo representa la suma de todos los precios unitarios del carrito de compras
         return items.stream().mapToDouble(ItemCarro::getSubtotal).sum();
     }
+
+    public double getSubtotalIva(){
+        //Obtenemos el IVA del 15% de todos los productos del carrito de compras
+        return getSubtotal()*0.15;
+    }
+
+    public double getTotal(){
+        //Sumamos la suma de los precios unitarios de todos los productos del carrito de compras
+        //con el IVA del 15% de todos los productos del carrito de compras
+        return getSubtotal() + getSubtotalIva();
+    }
+
+
 }

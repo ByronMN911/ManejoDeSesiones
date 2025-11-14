@@ -80,6 +80,7 @@
                 out.println("<meta charset=\"UTF-8\">");
                 out.println("<title>Lista de Productos</title>");
                 out.println("<link rel=\"stylesheet\" href=\"" + req.getContextPath() + "/css/estilos.css\">");
+                out.println("<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>");
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<h1>Lista de Productos</h1>");
@@ -127,16 +128,20 @@
                     out.println("<td>" + p.getTipo() + "</td>");
                     if(usernameOptional.isPresent()) {
                         out.println("<td>" + p.getPrecio()+ "</td>");
+                        out.println("<td>");
                         /*
                         * Agregamos un hipervínculo a cada registro de la tabla productos, donde agregamos
                         * un parámetro en la URL que será el ID de cada producto que obtenemos con el metodo
                         * getIdProducto() de nuestra clase Producto
                         * */
-                        out.println("<td><a href=\""
-                        + req.getContextPath()
-                        +"/agregar-carro?id=0"
-                        +p.getIdProducto()
-                        +"\">Agregar Producto al carro</a></td>");
+                        out.println("<form action='" + req.getContextPath() + "/agregar-carro' method='get' class='form-inline-icon'>");
+                        out.println("<input type='hidden' name='id' value='" + p.getIdProducto() + "'>");
+                        out.println("<button type='submit' class='icon-button' title='Agregar al carrito'>");
+                        out.println("<i class='fa fa-shopping-cart' aria-hidden='true'></i>");
+                        out.println("</button>");
+
+                        out.println("</form>");
+                        out.println("</td>");
                     }
                     out.println("</tr>");
                 });

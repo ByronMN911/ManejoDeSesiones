@@ -81,8 +81,8 @@ public class LoginServlet extends HttpServlet {
             }
         } else {
             /*
-             * En caso de que el optionalCookies no haya retornado un valor, es decir no se haya encontrado un valor para
-             * la clave username, el servlet redirige al usuario al formulario para que pueda volver a iniciar sus credenciales
+             * En caso de que el usernemeOptional no haya retornado un valor, es decir no se haya encontrado un valor para
+             * la clave username, el servlet redirige al usuario al formulario para que pueda volver a ingresar sus credenciales
              * pero redirige sin volver a hacer una nueva petición, es un forward interno
              * El getServletContext retorna un objeto que representa a la aplicación web completa
              * El getRequestDispatcher permite enviar una petición a un recurso dentro del servidor

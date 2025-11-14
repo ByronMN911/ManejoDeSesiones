@@ -97,15 +97,27 @@ public class ItemCarro {
         /**
          * Se comparan los atributos relevantes de ambos objetos ItemCarro.
          * La comparación se basa en el ID del producto (usando Objects.equals para manejar posibles valores null)
-         * y la cantidad de unidades
          *
          * Se utiliza Objects.equals() para comparar de forma segura, evitando
          * NullPointerException si alguno de los valores es null.
-         * Dos ítems son considerados iguales si contienen el mismo producto (mismo ID) y la misma cantidad.
-         * El operador && asegura que ambas condiciones deben cumplirse simultáneamente.
+         * Dos ítems son considerados iguales si contienen el mismo producto (mismo ID)
          */
-        return Objects.equals(producto.getIdProducto(), itemCarro.producto.getIdProducto())
-                && Objects.equals(cantidad, itemCarro.cantidad);
+        return Objects.equals(producto.getIdProducto(), itemCarro.producto.getIdProducto());
+
+    }
+
+    /*
+    * Como sobreescribimos equals(), también debemos sobrescribir hashCode(), es una obligación
+    *  del contrato de Java, si no sobreescribimos este metodo puede ocurri lo siguiente:
+    * contains() puede fallar si internamente usa hash (por ejemplo en un HashSet).
+    * remove() y indexOf() (basado en hash) puede fallar.
+    * En nuestro código si lo sobreescribimos no pasa nada porque nosotros en la clase DetalleCarro
+    * estamos utilzando contains() que internamente usa el metodo equals() sobreescrito pero contains()
+    * se aplica a una lista y las listas no usan hash sino comparaciones secuenciales con equals()
+    * */
+    @Override
+    public int hashCode() {
+        return Objects.hash(producto.getIdProducto());
     }
 
     /**
