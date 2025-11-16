@@ -27,7 +27,7 @@ public class ConexionBDD {
     *metodo de la clase que retorna un objeto de tipo connection, lanza excepciones SQL y
     * necesita 3 parámetros para establecer la conexión (url, username, password).
     * */
-    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+    public static Connection getConnection() throws SQLException{
         return DriverManager.getConnection(url, username, password);
     }
     //Para el día lunes crear una clase de java para comprobar si la conexión fue exitosa o no
